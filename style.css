@@ -1,0 +1,397 @@
+/* ==============================
+   GLOBAL STYLES
+   ============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --cream: #ffe9d5;
+    --pink: #ffad9b;
+    --dark: #17131b;
+    --glass: rgba(24, 18, 27, 0.55);
+    --border: rgba(255, 225, 210, 0.18);
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--cream);
+    background: var(--dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ==============================
+   LOFI BACKGROUND
+   ============================== */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    background-image: url("lofi-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    animation: slowZoom 18s ease-in-out infinite alternate;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background: linear-gradient(135deg, rgba(17,13,22,.70), rgba(80,43,50,.28));
+}
+
+.ambient-light {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .15;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.light-one {
+    background: #ff9f86;
+    top: 15%;
+    left: 10%;
+    animation: floatOne 10s ease-in-out infinite alternate;
+}
+
+.light-two {
+    background: #c88cff;
+    bottom: 10%;
+    right: 5%;
+    animation: floatTwo 13s ease-in-out infinite alternate;
+}
+
+/* ==============================
+   GLASS EFFECT
+   ============================== */
+.glass {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+/* ==============================
+   NAVIGATION
+   ============================== */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    padding: 18px 5%;
+}
+
+.nav {
+    max-width: 1100px;
+    margin: auto;
+    border-radius: 18px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span,
+h1 span {
+    color: var(--pink);
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-links a {
+    color: #f8dfd2;
+    text-decoration: none;
+    font-size: .9rem;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--pink);
+}
+
+/* ==============================
+   MUSIC BUTTON
+   ============================== */
+.music-btn {
+    position: fixed;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    border: 1px solid var(--border);
+    background: rgba(20,15,23,.75);
+    color: var(--cream);
+    border-radius: 30px;
+    padding: 11px 15px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: .3s;
+}
+
+.music-btn:hover {
+    transform: translateY(-50%) scale(1.06);
+    background: rgba(255,173,155,.18);
+}
+
+/* ==============================
+   SECTIONS
+   ============================== */
+.section {
+    min-height: 100vh;
+    width: min(1100px, 90%);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+}
+
+.hero {
+    position: relative;
+}
+
+.hero-content {
+    width: min(760px, 100%);
+    padding: 55px;
+    border-radius: 28px;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.small-title,
+.section-label {
+    color: var(--pink);
+    font-size: .78rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1;
+    margin: 15px 0 25px;
+    letter-spacing: -4px;
+}
+
+.hero-text {
+    max-width: 600px;
+    color: #e5d4ce;
+    font-size: 1.05rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--cream);
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: .3s;
+}
+
+.btn.primary {
+    background: rgba(255,151,130,.25);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255,190,170,.28);
+}
+
+.scroll-note {
+    position: absolute;
+    bottom: 15px;
+    opacity: .55;
+    font-size: .8rem;
+    animation: bounce 2s infinite;
+}
+
+/* ==============================
+   CONTENT CARDS
+   ============================== */
+.card {
+    width: 100%;
+    padding: 45px;
+    border-radius: 26px;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 8px 0 18px;
+    letter-spacing: -1px;
+}
+
+.card > p:not(.section-label) {
+    max-width: 760px;
+    color: #dfcfca;
+}
+
+/* ==============================
+   SKILLS
+   ============================== */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.skills span,
+.tech {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: rgba(255,210,190,.07);
+    color: #f5ded5;
+}
+
+/* ==============================
+   PROJECTS
+   ============================== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.project {
+    min-height: 240px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: rgba(255,210,190,.05);
+    transition: .35s;
+}
+
+.project:hover {
+    transform: translateY(-8px);
+    background: rgba(255,210,190,.10);
+}
+
+.project-number {
+    color: var(--pink);
+    font-size: .8rem;
+}
+
+.project h3 {
+    margin: 12px 0 8px;
+    font-size: 1.3rem;
+}
+
+.project p {
+    color: #d4c2bd;
+    font-size: .9rem;
+    margin-bottom: 20px;
+}
+
+.tech {
+    display: inline-block;
+    font-size: .72rem;
+    padding: 6px 9px;
+}
+
+.contact-card {
+    text-align: center;
+}
+
+.contact-card > p:not(.section-label) {
+    margin: 0 auto 25px;
+}
+
+/* ==============================
+   FOOTER
+   ============================== */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #bdaaa5;
+    font-size: .8rem;
+}
+
+/* ==============================
+   ANIMATIONS
+   ============================== */
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.06); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+@keyframes floatOne {
+    from { transform: translate(0,0); }
+    to { transform: translate(120px,70px); }
+}
+
+@keyframes floatTwo {
+    from { transform: translate(0,0); }
+    to { transform: translate(-100px,-60px); }
+}
+
+/* ==============================
+   MOBILE RESPONSIVE DESIGN
+   ============================== */
+@media (max-width: 750px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-content,
+    .card {
+        padding: 30px 22px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .music-btn {
+        right: 12px;
+        top: auto;
+        bottom: 20px;
+        transform: none;
+    }
+
+    .music-btn:hover {
+        transform: scale(1.06);
+    }
+}
